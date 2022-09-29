@@ -1,0 +1,64 @@
+* {
+/* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+/* Makes it easier to work with sizing */
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: rgb(55, 51, 66);
+}
+
+body, .inputBox {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+  background-color: rgb(101, 94, 121);
+  padding: .5rem;
+  border-radius: .5rem;
+  height: 350px;
+  width: 600px;
+  max-width: 90%;
+  margin-bottom: 24rem;
+}
+
+.inputBox {
+  /* quoteInput */
+  margin-top: 1.5rem;
+  border: 3px solid rgb(101, 94, 121);
+  outline: none;
+  width: 100%;
+  height: 8.5rem;
+  resize: none;
+  padding: .5rem .5rem;
+  font-size: 1.5rem;
+}
+
+.inputBox:focus {
+  border-color: darkgray;
+}
+
+.char-display {
+  /* quoteDisplay */
+  background-color: rgba(255, 82, 82, 0.418);
+  border: 3px solid white;
+  font-size: 1.5rem;
+  height: 10rem;
+}
+
+/* video abandoned me here* :) */
+/* Vid continued in here from 16:39 */
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}

@@ -54,7 +54,6 @@ async function renderNextQuote() {
 }
 
 //renderNextQuote()
-renderNextHiragana()
 generateHiraganaArray()
 
 //const hiraToRomaji = {
@@ -129,8 +128,8 @@ function generateHiraganaArray() {
     quoteInputElement.value = null
 }
 
-const reloadButton = document.getElementById('reloadButton')
-reloadButton.onclick = function() {
-    renderNextHiragana()
+reloadButton.addEventListener("click", e => {
     generateHiraganaArray()
-}
+  })
+
+

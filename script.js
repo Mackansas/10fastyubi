@@ -9,7 +9,7 @@ quoteInputElement.addEventListener('input', () => {
     const arrayValuet = quoteInputElement.value.split(' ')
     //translated into hira V
     const arrayValue = []
-    arrayValuet.forEach(element => arrayValue.push(romajiToHira[element]))
+    arrayValuet.forEach(element => arrayValue.push(romajiToHira[element.toLowerCase()]))
     //console.log("Char marks:", console.log(arrayValue))
     //console.log("Hiragana", arrayValue)
     //console.log("Input", arrayValuet)
@@ -37,7 +37,8 @@ quoteInputElement.addEventListener('input', () => {
             element.parentNode.removeChild(element); 
         }
 
-}) })
+    })
+})
 
 
 async function renderNextQuote() {
@@ -55,25 +56,42 @@ async function renderNextQuote() {
 renderNextHiragana()
 generateHiraganaArray()
 
-const hiraToRomaji = {
-    'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa',
-    'し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to'
-}
-
-romajiToHira = {
-    'to':'と','te':'て','tsu':'つ','chi':'ち','ta':'た','so':'そ','se':'せ','su':'す','shi':'し',
-    'sa':'さ','ko':'こ','ke':'け','ku':'く','ki':'き','ka':'か','o':'お','e':'え','u':'う','i':'い','a':'あ'
-}
-
-
 //const hiraToRomaji = {
-//    'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o'
+//    'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa',
+//    'し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to'
 //}
+
 //const romajiToHira = {
-//    'a':'あ',  'i':'い', 'u':'う',  'e':'え', 'o':'お'
+//    'to':'と','te':'て','tsu':'つ','chi':'ち','ta':'た','so':'そ','se':'せ','su':'す','shi':'し',
+//    'sa':'さ','ko':'こ','ke':'け','ku':'く','ki':'き','ka':'か','o':'お','e':'え','u':'う','i':'い','a':'あ'
 //}
 
+const romajiToHira = {
+    'wo':'を','wa':'わ',
+    'ro':'ろ','re':'れ','ru':'る','ri':'り','ra':'ら',
+    'yo':'よ','yu':'ゆ','ya':'や',
+    'mo':'も','me':'め','mu':'む','mi':'み','ma':'ま',
+    'ho':'ほ','he':'へ','fu':'ふ','hi':'ひ','ha':'は',
+    'no':'の','ne':'ね','nu':'ぬ','ni':'に','na':'な',
+    'to':'と','te':'て','tsu':'つ','chi':'ち','ta':'た',
+    'so':'そ','se':'せ','su':'す','shi':'し','sa':'さ',
+    'ko':'こ','ke':'け','ku':'く','ki':'き','ka':'か',
+    'o':'お','e':'え','u':'う','i':'い','a':'あ'
+}
 
+
+const hiraToRomaji = {
+    'あ':'a','い':'i','う':'u','え':'e','お':'o',
+    'か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko',
+    'さ':'sa','し':'shi','す':'su','せ':'se','そ':'so',
+    'た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to',
+    'な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no',
+    'は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho',
+    'ま':'ma','み':'mi','む':'mu','め':'me','も':'mo',
+    'や':'ya','ゆ':'yu','よ':'yo',
+    'ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro',
+    'わ':'wa','を':'wo'
+}
 
 
 //var hiragana = [
@@ -82,12 +100,13 @@ romajiToHira = {
 //]
 
 function renderNextHiragana() {
-    //const hiragana = [
-    //    'あ','い','う','え','お',
-    //]
     const hiragana = [
-        'あ','い','う','え','お','か','き','く','け','こ',
-        'さ','し','す','せ','そ','た','ち','つ','て','と']
+    'あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ',
+    'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
+    ]
+    //const hiragana = [
+    //    'あ','い','う','え','お','か','き','く','け','こ',
+    //    'さ','し','す','せ','そ','た','ち','つ','て','と']
     return (hiragana[Math.floor(Math.random() * hiragana.length)])
 
 }

@@ -2,6 +2,7 @@ const quoteDisplayElement = document.getElementById('charDisplay')
 const quoteInputElement = document.getElementById('inputBox')
 
 
+
 quoteInputElement.addEventListener('input', () => {
     //This selects each char in quote so it can be marked correct/incorrect
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
@@ -126,4 +127,10 @@ function generateHiraganaArray() {
         quoteDisplayElement.appendChild(characterSpan)
     })
     quoteInputElement.value = null
+}
+
+const reloadButton = document.getElementById('reloadButton')
+reloadButton.onclick = function() {
+    renderNextHiragana()
+    generateHiraganaArray()
 }

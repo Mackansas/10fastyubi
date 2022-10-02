@@ -10,9 +10,9 @@ quoteInputElement.addEventListener('input', () => {
     //translated into hira V
     const arrayValue = []
     arrayValuet.forEach(element => arrayValue.push(romajiToHira[element]))
-    console.log("Char marks:", console.log(arrayValue))
-    console.log("Hiragana", arrayValue)
-    console.log("Input", arrayValuet)
+    //console.log("Char marks:", console.log(arrayValue))
+    //console.log("Hiragana", arrayValue)
+    //console.log("Input", arrayValuet)
 
     arrayQuote.forEach((characterSpan, index) => {
         const character = arrayValue[index]
@@ -34,7 +34,7 @@ quoteInputElement.addEventListener('input', () => {
     //Checks each elem if something is right
     arrayQuote.forEach((element, index) => {
         if (element.classList.contains('correct')) {
-            element.parentNode.removeChild(element);
+            element.parentNode.removeChild(element); 
         }
 
 }) })
@@ -56,11 +56,24 @@ renderNextHiragana()
 generateHiraganaArray()
 
 const hiraToRomaji = {
-    'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o'
+    'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa',
+    'し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to'
 }
-const romajiToHira = {
-    'a':'あ',  'i':'い', 'u':'う',  'e':'え', 'o':'お'
+
+romajiToHira = {
+    'to':'と','te':'て','tsu':'つ','chi':'ち','ta':'た','so':'そ','se':'せ','su':'す','shi':'し',
+    'sa':'さ','ko':'こ','ke':'け','ku':'く','ki':'き','ka':'か','o':'お','e':'え','u':'う','i':'い','a':'あ'
 }
+
+
+//const hiraToRomaji = {
+//    'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o'
+//}
+//const romajiToHira = {
+//    'a':'あ',  'i':'い', 'u':'う',  'e':'え', 'o':'お'
+//}
+
+
 
 
 //var hiragana = [
@@ -69,9 +82,12 @@ const romajiToHira = {
 //]
 
 function renderNextHiragana() {
+    //const hiragana = [
+    //    'あ','い','う','え','お',
+    //]
     const hiragana = [
-        'あ','い','う','え','お',
-    ]
+        'あ','い','う','え','お','か','き','く','け','こ',
+        'さ','し','す','せ','そ','た','ち','つ','て','と']
     return (hiragana[Math.floor(Math.random() * hiragana.length)])
 
 }
@@ -79,7 +95,7 @@ function renderNextHiragana() {
 function generateHiraganaArray() {
     let res =''
     //generate 10 hiragana chars
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 57; i++) {
         res += renderNextHiragana() + '';
     }
     //Remove last ' '

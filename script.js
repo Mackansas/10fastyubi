@@ -1,9 +1,9 @@
 const quoteDisplayElement = document.getElementById('charDisplay')
 const quoteInputElement = document.getElementById('inputBox')
 
-
-
 quoteInputElement.addEventListener('input', () => {
+
+    
     //This selects each char in quote so it can be marked correct/incorrect
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
     //Splits each input at space
@@ -14,6 +14,11 @@ quoteInputElement.addEventListener('input', () => {
     //console.log("Char marks:", console.log(arrayValue))
     //console.log("Hiragana", arrayValue)
     //console.log("Input", arrayValuet)
+    console.log(arrayQuote.length)
+    if (arrayQuote.length === 0) {
+        console.log("Yohohoh")
+        generateHiraganaArray()
+    }
 
     arrayQuote.forEach((characterSpan, index) => {
         const character = arrayValue[index]
@@ -37,10 +42,8 @@ quoteInputElement.addEventListener('input', () => {
         if (element.classList.contains('correct')) {
             element.parentNode.removeChild(element); 
         }
-
     })
 })
-
 
 async function renderNextQuote() {
     const quote = await getRandomQuote()
@@ -113,7 +116,7 @@ function renderNextHiragana() {
 
 function generateHiraganaArray() {
     let res =''
-    //generate 10 hiragana chars
+    //generate 10 hiragana chars    57
     for (let i = 0; i < 57; i++) {
         res += renderNextHiragana() + '';
     }
@@ -132,4 +135,10 @@ reloadButton.addEventListener("click", e => {
     generateHiraganaArray()
   })
 
-
+  
+quoteInputElement.addEventListener("input", e => {
+    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+    if (arrayQuote.length === 0) {
+        generateHiraganaArray()
+    }
+})

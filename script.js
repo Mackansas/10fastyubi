@@ -1,11 +1,18 @@
-const RANDOM_QUOTE_API_URL = "https://api.quotable.io/random"
 const quoteDisplayElement = document.getElementById('charDisplay')
 const quoteInputElement = document.getElementById('inputBox')
 
+
 quoteInputElement.addEventListener('input', () => {
+    //This selects each char in quote so it can be marked correct/incorrect
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
-    const arrayValue = quoteInputElement.value.split('')
-    let correct = true
+    //Splits each input at space
+    const arrayValuet = quoteInputElement.value.split(' ')
+    //translated into hira V
+    const arrayValue = []
+    arrayValuet.forEach(element => arrayValue.push(romajiToHira[element]))
+    console.log("Char marks:", console.log(arrayValue))
+    console.log("Hiragana", arrayValue)
+    console.log("Input", arrayValuet)
 
     arrayQuote.forEach((characterSpan, index) => {
         const character = arrayValue[index]
@@ -13,26 +20,25 @@ quoteInputElement.addEventListener('input', () => {
         if (character == null) {
             characterSpan.classList.remove('correct')
             characterSpan.classList.remove('incorrect')
-            correct = false
         /*Checks if we have typed the char and it is correct, make it "green"*/
         } else if (character === characterSpan.innerText) {
             characterSpan.classList.add('correct')
             characterSpan.classList.remove('incorrect')
+            quoteInputElement.value = ''
         /* We typed the wrong char, make it "red" */
         } else {
             characterSpan.classList.add('incorrect')
             characterSpan.classList.remove('correct')
-            correct = false
         }
     })
-    if (correct) renderNextQuote()
-})
+    //Checks each elem if something is right
+    arrayQuote.forEach((element, index) => {
+        if (element.classList.contains('correct')) {
+            element.parentNode.removeChild(element);
+        }
 
-function getRandomQuote() {
-    return fetch(RANDOM_QUOTE_API_URL)
-        .then(response => response.json())
-        .then(data => data.content)
-}
+}) })
+
 
 async function renderNextQuote() {
     const quote = await getRandomQuote()
@@ -45,4 +51,44 @@ async function renderNextQuote() {
     quoteInputElement.value = null
 }
 
-renderNextQuote()
+//renderNextQuote()
+renderNextHiragana()
+generateHiraganaArray()
+
+const hiraToRomaji = {
+    'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o'
+}
+const romajiToHira = {
+    'a':'あ',  'i':'い', 'u':'う',  'e':'え', 'o':'お'
+}
+
+
+//var hiragana = [
+//    'あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ',
+//    'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
+//]
+
+function renderNextHiragana() {
+    const hiragana = [
+        'あ','い','う','え','お',
+    ]
+    return (hiragana[Math.floor(Math.random() * hiragana.length)])
+
+}
+
+function generateHiraganaArray() {
+    let res =''
+    //generate 10 hiragana chars
+    for (let i = 0; i < 11; i++) {
+        res += renderNextHiragana() + '';
+    }
+    //Remove last ' '
+    //res = res.slice(0,-1)
+    quoteDisplayElement.innerHTML = ''
+    res.split('').forEach(character => {
+        const characterSpan = document.createElement('span')
+        characterSpan.innerText = character
+        quoteDisplayElement.appendChild(characterSpan)
+    })
+    quoteInputElement.value = null
+}

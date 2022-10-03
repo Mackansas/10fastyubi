@@ -6,25 +6,25 @@
 
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   margin: 0;
   background-color: rgb(55, 51, 66);
 }
 
+/* Mid div */
 body, .inputBox {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
+  flex: 1;
   background-color: rgb(101, 94, 121);
   padding: .5rem;
   border-radius: .5rem;
   height: 350px;
   width: 600px;
   max-width: 90%;
-  margin-bottom: 24rem;
+  margin-top: 7rem;
 }
 
 .inputBox {
@@ -54,6 +54,110 @@ body, .inputBox {
 /* video abandoned me here* :) */
 /* Vid continued in here from 16:39 */
 
+/* https://www.w3schools.com/css/css3_buttons.asp */
+
+.hiraButtons {
+  margin-top: 7rem;
+  display: block;
+  flex: 1;
+}
+
+.vHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.kHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.sHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.tHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.nHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.hHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.mHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.yHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.rHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.wHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+/* Left side flex */
+
+.leftSideDiv {
+  flex: 1;
+}
+
 .correct {
   color: green;
 }
@@ -62,3 +166,4 @@ body, .inputBox {
   color: red;
   text-decoration: underline;
 }
+

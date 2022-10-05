@@ -1,6 +1,7 @@
 const hiraDisplayElement = document.getElementById('charDisplay')
 const inputElement = document.getElementById('inputBox')
 var endless = false
+var count = 0
 
 const romajiToHira = {
     'wo':'を','wa':'わ',
@@ -33,7 +34,7 @@ function renderNextHiragana() {
     'あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ',
     'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
     ]
-    //const hiragana = ['あ','い','う','え','お']
+    // const hiragana = ['あ','い','う','え','お']
     return (hiragana[Math.floor(Math.random() * hiragana.length)])
 }
 
@@ -71,6 +72,8 @@ inputElement.addEventListener('input', () => {
             characterSpan.classList.add('correct')
             characterSpan.classList.remove('incorrect')
             inputElement.value = ''
+            count +=1
+            document.getElementById('counterDisplay').innerHTML = 'Count: ' + count
         /* We typed the wrong char, make it "red" */
         } else {
             characterSpan.classList.add('incorrect')
@@ -94,7 +97,7 @@ inputElement.addEventListener("input", e => {
         generateHiraganaArray()
     }
     if (endless && arrayHira.length < 100) {
-        for (let i = arrayHira.length; i < 110; i++){
+        for (let i = arrayHira.length; i < 130; i++){
         const characterSpan = document.createElement('span')
         characterSpan.innerText = renderNextHiragana() + ''
         hiraDisplayElement.appendChild(characterSpan)

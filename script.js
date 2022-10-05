@@ -1,5 +1,6 @@
-const quoteDisplayElement = document.getElementById('charDisplay')
-const quoteInputElement = document.getElementById('inputBox')
+const hiraDisplayElement = document.getElementById('charDisplay')
+const inputElement = document.getElementById('inputBox')
+var endless = false
 
 const romajiToHira = {
     'wo':'を','wa':'わ',
@@ -28,39 +29,38 @@ const hiraToRomaji = {
 }
 
 function renderNextHiragana() {
-    const hiragana = [
-    'あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ',
-    'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
-    ]
+    //const hiragana = [
+    //'あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ',
+    //'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
+    //]
+    const hiragana = ['あ','い','う','え','お']
     return (hiragana[Math.floor(Math.random() * hiragana.length)])
-
 }
 
 function generateHiraganaArray() {
     let res =''
-    //generate 10 hiragana chars    57
-    for (let i = 0; i < 54; i++) {
+    for (let i = 0; i <100; i++) {
         res += renderNextHiragana() + '';
     }
-    quoteDisplayElement.innerHTML = ''
+    hiraDisplayElement.innerHTML = ''
     res.split('').forEach(character => {
         const characterSpan = document.createElement('span')
         characterSpan.innerText = character
-        quoteDisplayElement.appendChild(characterSpan)
+        hiraDisplayElement.appendChild(characterSpan)
     })
-    quoteInputElement.value = null
+    inputElement.value = null
 }
   
-quoteInputElement.addEventListener('input', () => {
+inputElement.addEventListener('input', () => {
     //This selects each char in quote so it can be marked correct/incorrect
-    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+    const arrayHira = hiraDisplayElement.querySelectorAll('span')
     //Splits each input at space
-    const arrayValuet = quoteInputElement.value.split(' ')
+    const arrayValuet = inputElement.value.split(' ')
     //translated into hira V
     const arrayValue = []
     arrayValuet.forEach(element => arrayValue.push(romajiToHira[element.toLowerCase()]))
 
-    arrayQuote.forEach((characterSpan, index) => {
+    arrayHira.forEach((characterSpan, index) => {
         const character = arrayValue[index]
         /* Checks if we have typed the char, if not make it "black" */
         if (character == null) {
@@ -70,7 +70,7 @@ quoteInputElement.addEventListener('input', () => {
         } else if (character === characterSpan.innerText) {
             characterSpan.classList.add('correct')
             characterSpan.classList.remove('incorrect')
-            quoteInputElement.value = ''
+            inputElement.value = ''
         /* We typed the wrong char, make it "red" */
         } else {
             characterSpan.classList.add('incorrect')
@@ -78,18 +78,37 @@ quoteInputElement.addEventListener('input', () => {
         }
     })
     //Checks each elem if something is right
-    arrayQuote.forEach((element, index) => {
+    arrayHira.forEach((element, index) => {
+        //Remove hira char if it is correct
         if (element.classList.contains('correct')) {
-            element.parentNode.removeChild(element); 
+            element.parentNode.removeChild(element);
+        //TODO Append one new random hira
         }
     })
 })
 
 //Tried to move into above listener, didnt update properly, had to press key again for it to fire
-quoteInputElement.addEventListener("input", e => {
-    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
-    if (arrayQuote.length === 0) {
+inputElement.addEventListener("input", e => {
+    const arrayHira = hiraDisplayElement.querySelectorAll('span')
+    if (arrayHira.length === 0) {
         generateHiraganaArray()
+    }
+    if (endless && arrayHira.length < 100) {
+        for (let i = arrayHira.length; i < 110; i++){
+        const characterSpan = document.createElement('span')
+        characterSpan.innerText = renderNextHiragana() + ''
+        hiraDisplayElement.appendChild(characterSpan)
+        }
+    }
+})
+
+endlessButton.addEventListener("click", e => {
+    if (endless) {
+        endless = false
+        endlessButton.innerText="Endless: OFF"
+    } else {
+        endless = true
+        endlessButton.innerText="Endless: ON"
     }
 })
 

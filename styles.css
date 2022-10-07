@@ -6,7 +6,6 @@
 
 body {
   display: flex;
-  min-height: 100vh;
   margin: 0;
   background-color: rgb(55, 51, 66);
 }
@@ -19,24 +18,24 @@ body, .inputBox {
 .container {
   flex: 1;
   background-color: rgb(101, 94, 121);
-  padding: .5rem;
-  border-radius: .5rem;
+  padding: 8px;
+  border-radius: 8px;
   height: 350px;
   width: 600px;
   max-width: 90%;
-  margin-top: 7rem;
+  margin-top: 112px;
 }
 
 .inputBox {
   /* quoteInput */
-  margin-top: 1.5rem;
+  margin-top: 24px;
   border: 3px solid rgb(101, 94, 121);
   outline: none;
   width: 100%;
-  height: 8.5rem;
+  height: 136px;
   resize: none;
-  padding: .5rem .5rem;
-  font-size: 1.5rem;
+  padding: 8px 8px;
+  font-size: 24px;
 }
 
 .inputBox:focus {
@@ -47,9 +46,10 @@ body, .inputBox {
   /* quoteDisplay */
   background-color: rgba(255, 82, 82, 0.418);
   border: 3px solid white;
-  font-size: 1.85rem;
-  height: 10rem;
+  font-size: 30px;
+  height: 160px;
   overflow: hidden;
+  font-size: 28px;
 }
 
 /* video abandoned me here* :) */
@@ -58,7 +58,7 @@ body, .inputBox {
 /* https://www.w3schools.com/css/css3_buttons.asp */
 
 .hiraButtons {
-  margin-top: 7rem;
+  margin-top: 112px;
   display: block;
   flex: 1;
 }
@@ -66,101 +66,121 @@ body, .inputBox {
 .vHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .kHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .sHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .tHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .nHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .hHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .mHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .yHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .rHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 .wHira {
   display: block;
   background-color: rgb(101, 94, 121);
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 10px;
   margin-bottom: 5px;
   width: 400px;
   border-radius: 8px;
+  border-color: black;
+
 }
 
 /* Left side flex */

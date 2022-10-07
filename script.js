@@ -7,6 +7,12 @@ let hiragana = [
     'ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'
     ]
 
+const hiraDict = {
+    'vHira' : ['あ','い','う','え','お'], 'kHira' : ['か','き','く','け','こ'], 'sHira' : ['さ','し','す','せ','そ'],
+    'tHira' : ['た','ち','つ','て','と'], 'nHira' : ['な','に','ぬ','ね','の','ん'], 'hHira' : ['は','ひ','ふ','へ','ほ'],
+    'mHira' : ['ま','み','む','め','も'], 'yHira' : ['や','ゆ','よ'], 'rHira' : ['ら','り','る','れ','ろ'], 
+    'wHira' : ['わ','を']
+}
 
 const romajiToHira = {
     'wo':'を','wa':'わ',
@@ -33,6 +39,8 @@ const hiraToRomaji = {
     'ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro',
     'わ':'wa','を':'wo'
 }
+
+const hiraButtonsID = ['vHira','kHira','sHira','tHira','nHira','hHira','mHira','yHira','rHira','wHira']
 
 function renderNextHiragana() {
     // const hiragana = ['あ','い','う','え','お']
@@ -120,114 +128,18 @@ reloadHiraButton.addEventListener('click', e => {
     generateHiraganaArray()
 })
 
-vHira.addEventListener("click", e => {
-    const vHiraArray = ['あ','い','う','え','お']
-    if (hiragana.some(r => vHiraArray.includes(r))) {
-        hiragana = hiragana.filter((hira) => !vHiraArray.includes(hira));
-        vHira.innerText="V-Hira: あいうえお"
-    } else {
-        hiragana = [...hiragana, ...vHiraArray]
-        vHira.innerText="V-Hira: Active"
-    }
-})
-
-kHira.addEventListener("click", e => {
-    const kHiraArray = ['か','き','く','け','こ']
-    if (hiragana.some(c => kHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !kHiraArray.includes(hira));
-        kHira.innerText="K-Hira: かきくけこ"
-    } else {
-        hiragana = [...hiragana, ...kHiraArray]
-        kHira.innerText="K-Hira: Active"
-    }
-})
-
-sHira.addEventListener("click", e => {
-    const sHiraArray = ['さ','し','す','せ','そ']
-    if (hiragana.some(c => sHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !sHiraArray.includes(hira));
-        sHira.innerText="S-Hira: さしすせそ"
-    } else {
-        hiragana = [...hiragana, ...sHiraArray]
-        sHira.innerText="S-Hira: Active"
-    }
-})
-
-tHira.addEventListener("click", e => {
-    const tHiraArray = ['た','ち','つ','て','と']
-    if (hiragana.some(c => tHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !tHiraArray.includes(hira));
-        tHira.innerText="T-Hira: たちつてと"
-    } else {
-        hiragana = [...hiragana, ...tHiraArray]
-        tHira.innerText="T-Hira: Active"
-    }
-})
-
-nHira.addEventListener("click", e => {
-    const nHiraArray = ['な','に','ぬ','ね','の','ん']
-    if (hiragana.some(c => nHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !nHiraArray.includes(hira));
-        nHira.innerText="N-Hira: なにぬねのん"
-    } else {
-        hiragana = [...hiragana, ...nHiraArray]
-        nHira.innerText="N-Hira: Active"
-    }
-})
-
-hHira.addEventListener("click", e => {
-    const hHiraArray = ['は','ひ','ふ','へ','ほ']
-    if (hiragana.some(c => hHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !hHiraArray.includes(hira));
-        hHira.innerText="H-Hira: はひふへほ"
-    } else {
-        hiragana = [...hiragana, ...hHiraArray]
-        hHira.innerText="H-Hira: Active"
-    }
-})
-
-mHira.addEventListener("click", e => {
-    const mHiraArray = ['ま','み','む','め','も']
-    if (hiragana.some(c => mHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !mHiraArray.includes(hira));
-        mHira.innerText="M-Hira: まみむめも"
-    } else {
-        hiragana = [...hiragana, ...mHiraArray]
-        mHira.innerText="M-Hira: Active"
-    }
-})
-
-yHira.addEventListener("click", e => {
-    const yHiraArray = ['や','ゆ','よ']
-    if (hiragana.some(c => yHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !yHiraArray.includes(hira));
-        yHira.innerText="Y-Hira: やゆよ"
-    } else {
-        hiragana = [...hiragana, ...yHiraArray]
-        yHira.innerText="Y-Hira: Active"
-    }
-})
-
-rHira.addEventListener("click", e => {
-    const rHiraArray = ['ら','り','る','れ','ろ']
-    if (hiragana.some(c => rHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !rHiraArray.includes(hira));
-        rHira.innerText="R-Hira: らりるれろ"
-    } else {
-        hiragana = [...hiragana, ...rHiraArray]
-        rHira.innerText="R-Hira: Active"
-    }
-})
-
-wHira.addEventListener("click", e => {
-    const wHiraArray = ['わ','を']
-    if (hiragana.some(c => wHiraArray.includes(c))) {
-        hiragana = hiragana.filter((hira) => !wHiraArray.includes(hira));
-        wHira.innerText="W-Hira: わを"
-    } else {
-        hiragana = [...hiragana, ...wHiraArray]
-        wHira.innerText="W-Hira: Active"
-    }
+hiraButtonsID.forEach((hiraStringID) => {
+    let hiraButton = document.getElementById(hiraStringID)
+    hiraButton.addEventListener("click", e => {
+        let hiraArray = hiraDict[hiraStringID]
+        if (hiragana.some(r => hiraArray.includes(r))) {
+            hiragana = hiragana.filter((hira) => !hiraArray.includes(hira));
+            hiraButton.style.color = "rgba(255, 82, 82, 0.85)"
+        } else {
+            hiragana = [...hiragana, ...hiraArray]
+            hiraButton.style.color = "black"
+        }
+    })
 })
 
 generateHiraganaArray()

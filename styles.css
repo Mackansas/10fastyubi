@@ -183,6 +183,18 @@ body, .inputBox {
 
 }
 
+.dHira {
+  display: block;
+  background-color: rgb(101, 94, 121);
+  font-size: 24px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  width: 400px;
+  border-radius: 8px;
+  border-color: black;
+  color: rgba(255, 82, 82, 0.85);
+}
+
 /* Left side flex */
 
 .leftSideDiv {
